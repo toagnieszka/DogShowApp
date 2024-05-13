@@ -2,6 +2,10 @@
 {
     public abstract class DogBase : IDog
     {
+        public delegate void PointsAddedDelegate(object sender, EventArgs args);
+
+        public abstract event PointsAddedDelegate PointsAdded;
+
         public DogBase (string name, string breed)
         {
             this.Name = name;
@@ -28,7 +32,7 @@
             }
             else
             {
-                //    throw new Exception(Console.WriteLine("Invalid point value"));
+                  throw new Exception("Invalid point value");
             }
         }
 

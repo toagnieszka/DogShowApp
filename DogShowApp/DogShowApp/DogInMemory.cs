@@ -4,6 +4,8 @@
     {
         private List<float> points = new List<float>();
 
+        public override event PointsAddedDelegate PointsAdded;
+
         public DogInMemory(string name, string breed) : base(name, breed)
         {
         }
@@ -13,10 +15,15 @@
             if (point >= 0 && point <= 10)
             {
                 this.points.Add(point);
+                
+                if (PointsAdded != null)
+                {
+                    PointsAdded(this, new EventArgs());
+                }
             }
             else
             {
-                //throw new Exception(Console.WriteLine("Invalid point value"));
+                throw new Exception("Invalid point value");
             }
         }
 

@@ -2,6 +2,8 @@
 {
     public class DogInFile : DogBase
     {
+        public override event PointsAddedDelegate PointsAdded;
+
         public DogInFile(string name, string breed) : base(name, breed)
         {
         }
@@ -10,9 +12,21 @@
 
         public override void AddPoint(float point)
         {
-            using (var writer = File.AppendText(fileName))
+            if (point <= 10 && point >= 1)
             {
-                writer.WriteLine(point);
+                using (var writer = File.AppendText(fileName))
+                {
+                    writer.WriteLine(point);
+                }
+
+                if (PointsAdded != null)
+                {
+                    PointsAdded(this, new EventArgs());
+                }
+            }
+            else 
+            {
+                throw new Exception("Wrong point value");
             }
         }
 
