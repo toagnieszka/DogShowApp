@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShowApp", "DogShowApp\DogShowApp.csproj", "{DA6E016A-245C-4289-843C-F0579410F31D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogShowApp.Tests", "DogShowApp.Tests\DogShowApp.Tests.csproj", "{C2502628-056C-4A7B-A9BC-8A4CD5DE88FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA6E016A-245C-4289-843C-F0579410F31D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6E016A-245C-4289-843C-F0579410F31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6E016A-245C-4289-843C-F0579410F31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6E016A-245C-4289-843C-F0579410F31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2502628-056C-4A7B-A9BC-8A4CD5DE88FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2502628-056C-4A7B-A9BC-8A4CD5DE88FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2502628-056C-4A7B-A9BC-8A4CD5DE88FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2502628-056C-4A7B-A9BC-8A4CD5DE88FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B7C3EA6-FD9A-4659-ABA9-8E8FC7AEC3C7}
+	EndGlobalSection
+EndGlobal
