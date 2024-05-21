@@ -1,20 +1,27 @@
-﻿namespace DogShowApp
+﻿using System;
+
+namespace DogShowApp
 {
     public class DogInFile : DogBase
     {
         public override event PointsAddedDelegate PointsAdded;
 
-        public DogInFile(string name, string breed) : base(name, breed)
+        public DogInFile(string name, Breed breed) : base(name, breed)
         {
+
         }
 
-        const string fileName = "points.txt";
+        public DogInFile()
+        { }
+
+        const string fileName = "_points.txt";
 
         public override void AddPoint(float point)
         {
+
             if (point <= 10 && point >= 1)
             {
-                using (var writer = File.AppendText(fileName))
+                using (var writer = File.AppendText(Name.ToUpper() + fileName))
                 {
                     writer.WriteLine(point);
                 }
@@ -26,7 +33,9 @@
             }
             else 
             {
-                throw new Exception("Wrong point value");
+                Console.ForegroundColor = ConsoleColor.Red;
+                throw new Exception("Invalid point value");
+                Console.ResetColor();
             }
         }
 
@@ -34,9 +43,9 @@
         {
             var statistics = new Statistics();
 
-            if (File.Exists(fileName))
+            if (File.Exists(Name.ToUpper() + fileName))
             {
-                using (var reader = File.OpenText(fileName))
+                using (var reader = File.OpenText(Name.ToUpper() + fileName))
                 {
 
                     var line = reader.ReadLine();
@@ -50,7 +59,9 @@
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             throw new Exception("Line is not float");
+                            Console.ResetColor();
                         }
 
                     }
@@ -58,7 +69,9 @@
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 throw new Exception("File not exist");
+                Console.ResetColor();
             }
 
             return statistics;

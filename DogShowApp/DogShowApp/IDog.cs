@@ -4,7 +4,7 @@
     {
         string Name { get; }
 
-        string Breed { get; }
+        Breed Breed { get; }
 
         void AddPoint(float point);
 

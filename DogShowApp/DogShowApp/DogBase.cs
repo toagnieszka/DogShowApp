@@ -1,4 +1,6 @@
-﻿namespace DogShowApp
+﻿using System;
+
+namespace DogShowApp
 {
     public abstract class DogBase : IDog
     {
@@ -6,15 +8,18 @@
 
         public abstract event PointsAddedDelegate PointsAdded;
 
-        public DogBase (string name, string breed)
+        public DogBase (string name, Breed breed)
         {
             this.Name = name;
             this.Breed = breed;
         }
 
-        public string Name { get; private set; }
+        public DogBase()
+        { }
 
-        public string Breed { get; private set; }
+        public string Name { get; set; }
+
+        public Breed Breed { get; set; }
 
         public abstract void AddPoint(float point);
 
@@ -32,7 +37,9 @@
             }
             else
             {
-                  throw new Exception("Invalid point value");
+                Console.ForegroundColor = ConsoleColor.Red;
+                throw new Exception("Invalid point value");
+                Console.ResetColor();
             }
         }
 

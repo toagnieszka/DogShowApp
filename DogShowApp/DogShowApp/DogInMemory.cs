@@ -6,9 +6,12 @@
 
         public override event PointsAddedDelegate PointsAdded;
 
-        public DogInMemory(string name, string breed) : base(name, breed)
+        public DogInMemory(string name, Breed breed) : base(name, breed)
         {
         }
+
+        public DogInMemory()
+        { }
 
         public override void AddPoint(float point)
         {
@@ -23,7 +26,9 @@
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 throw new Exception("Invalid point value");
+                Console.ResetColor();
             }
         }
 
@@ -41,3 +46,4 @@
         }
     }
 }
+
