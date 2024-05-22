@@ -23,7 +23,7 @@ void GetDogInMemory(DogInMemory dog)
             dog.Breed = Breed.BelgianMalinois;
             break;
         case "3":
-            dog.Breed = Breed.GermanSherped;
+            dog.Breed = Breed.GermanShepherd;
             break;
         case "4":
             dog.Breed = Breed.BorderCollie;
@@ -35,11 +35,11 @@ void GetDogInMemory(DogInMemory dog)
 
 }
 
-void DogInMemoryInfo (DogInMemory dog)
+void DogInMemoryInfo(DogInMemory dog)
 {
     var statistics = dog.GetStatistics();
 
-    Console.ForegroundColor= ConsoleColor.DarkMagenta;
+    Console.ForegroundColor = ConsoleColor.DarkMagenta;
     Console.WriteLine($"\nOto statystyki dla psa o imieniu {dog.Name} rasy {dog.Breed}:\n");
     Console.WriteLine($"Najwyższa nota: \u001b[33m{statistics.Max}\u001b[35m");
     Console.WriteLine($"Najniższa nota: \u001b[33m{statistics.Min}\u001b[35m");
@@ -71,7 +71,7 @@ void GetDogInFile(DogInFile dog)
             dog.Breed = Breed.BelgianMalinois;
             break;
         case "3":
-            dog.Breed = Breed.GermanSherped;
+            dog.Breed = Breed.GermanShepherd;
             break;
         case "4":
             dog.Breed = Breed.BorderCollie;
@@ -90,21 +90,21 @@ void DogInFileInfo(DogInFile dog)
     Console.WriteLine($"\nOto statystyki dla psa o imieniu {dog.Name} rasy {dog.Breed}:\n");
     Console.WriteLine($"Najwyższa nota: \u001b[33m{statistics.Max}\u001b[35m");
     Console.WriteLine($"Najniższa nota: \u001b[33m{statistics.Min}\u001b[35m");
-    Console.WriteLine($"Średnia punktów: \u001b[33m{statistics.Average}\u001b[35m");
+    Console.WriteLine($"Średnia punktów: \u001b[33m{statistics.Average:N2}\u001b[35m");
     Console.WriteLine($"Finalna ocena: \u001b[33m{statistics.FinalTitle}\u001b[35m");
     Console.ResetColor();
 }
 
 void PointAdded(object sender, EventArgs args)
 {
-    Console.ForegroundColor= ConsoleColor.DarkCyan;
+    Console.ForegroundColor = ConsoleColor.DarkCyan;
     Console.WriteLine("Ocenę dodano");
     Console.ResetColor();
 }
 
 
 Console.ForegroundColor = ConsoleColor.DarkBlue;
-Console.WriteLine("Witaj w programie do oceny psów\n");
+Console.WriteLine("Witaj w programie do oceny psów wystawowych\n");
 Console.WriteLine("Jeżeli chcesz dodać ocenę w pamięci wpisz: \u001b[31m 1 \u001b[34m \nJeżeli chcesz dodać ocenę do pliku wpisz: \u001b[31m 2\n");
 Console.ResetColor();
 
@@ -115,45 +115,9 @@ var activeApp = false;
 if (number == "1")
 {
     var dog = new DogInMemory();
-    dog.PointsAdded += PointAdded; 
+    dog.PointsAdded += PointAdded;
     GetDogInMemory(dog);
 
-    Console.ForegroundColor = ConsoleColor.DarkGray;
-    Console.WriteLine("\n*Jeżeli chcesz wyświetlić statystyki wpisz: \u001b[31m Q");
-    Console.ResetColor ();
-
-    while (!activeApp)
-    {
-        Console.ForegroundColor = ConsoleColor.DarkBlue;
-        Console.WriteLine("\nWprowadź ocenę dla psa:");
-        Console.ResetColor();
-        var input = Console.ReadLine();
-
-        if (input == "q" || input == "Q")
-        {
-            break;
-        }
-
-        try
-        {
-            dog.AddPoint(input);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-
-       
-    }
-
-    DogInMemoryInfo(dog);
-}
-else if (number == "2")
-{
-    var dog = new DogInFile();
-    dog.PointsAdded += PointAdded;
-    GetDogInFile(dog);
-    
     Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("\n*Jeżeli chcesz wyświetlić statystyki wpisz: \u001b[31m Q");
     Console.ResetColor();
@@ -161,7 +125,7 @@ else if (number == "2")
     while (!activeApp)
     {
         Console.ForegroundColor = ConsoleColor.DarkBlue;
-        Console.WriteLine("\nWprowadź ocenę dla psa:");
+        Console.WriteLine("\nWprowadź ocenę dla psa (od 1 do 10):");
         Console.ResetColor();
         var input = Console.ReadLine();
 
@@ -179,6 +143,38 @@ else if (number == "2")
             Console.WriteLine(ex.Message);
         }
     }
+    DogInMemoryInfo(dog);
+}
+else if (number == "2")
+{
+    var dog = new DogInFile();
+    dog.PointsAdded += PointAdded;
+    GetDogInFile(dog);
 
+    Console.ForegroundColor = ConsoleColor.DarkGray;
+    Console.WriteLine("\n*Jeżeli chcesz wyświetlić statystyki wpisz: \u001b[31m Q");
+    Console.ResetColor();
+
+    while (!activeApp)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("\nWprowadź ocenę dla psa (od 1 do 10):");
+        Console.ResetColor();
+        var input = Console.ReadLine();
+
+        if (input == "q" || input == "Q")
+        {
+            break;
+        }
+
+        try
+        {
+            dog.AddPoint(input);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
     DogInFileInfo(dog);
 }

@@ -15,6 +15,5 @@
         delegate void PointsAddedDelegate(object sender, EventArgs args);
 
         Statistics GetStatistics();
-
     }
 }

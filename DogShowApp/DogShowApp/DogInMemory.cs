@@ -18,7 +18,7 @@
             if (point >= 0 && point <= 10)
             {
                 this.points.Add(point);
-                
+
                 if (PointsAdded != null)
                 {
                     PointsAdded(this, new EventArgs());
@@ -28,10 +28,8 @@
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 throw new Exception("Invalid point value");
-                Console.ResetColor();
             }
         }
-
 
         public override Statistics GetStatistics()
         {

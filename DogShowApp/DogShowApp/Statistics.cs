@@ -24,7 +24,7 @@ namespace DogShowApp
         {
             get
             {
-                switch (this.Average) 
+                switch (this.Average)
                 {
                     case var average when average >= 9:
                         return "Doskonała";
@@ -38,7 +38,6 @@ namespace DogShowApp
                         return "Dyskwalifikująca";
                 }
             }
-
         }
 
         public Statistics()
@@ -56,6 +55,5 @@ namespace DogShowApp
             this.Min = Math.Min(this.Min, point);
             this.Max = Math.Max(this.Max, point);
         }
-
     }
 }

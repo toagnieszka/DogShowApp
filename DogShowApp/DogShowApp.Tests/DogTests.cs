@@ -6,7 +6,7 @@ namespace DogShowApp.Tests
         public void WhenPointsAdded_ThenShowCorrectMaxValue()
         {
             //arrange
-            var dog = new DogInMemory("Jim", "Border");
+            var dog = new DogInMemory("Jim", Breed.BelgianMalinois);
             dog.AddPoint(5);
             dog.AddPoint(7.5f);
             dog.AddPoint("10");
@@ -22,7 +22,7 @@ namespace DogShowApp.Tests
         public void WhenPointsAdded_ThenShowCorrectMinValue()
         {
             //arrange
-            var dog = new DogInMemory("River", "Collie");
+            var dog = new DogInMemory("River", Breed.Kelpie);
             dog.AddPoint(3);
             dog.AddPoint(9.5f);
             dog.AddPoint("8");
@@ -38,7 +38,7 @@ namespace DogShowApp.Tests
         public void WhenPointsAdded_ThenShowCorrectAverageValue()
         {
             //arrange
-            var dog = new DogInMemory("Luk", "Corgi");
+            var dog = new DogInMemory("Luk", Breed.BorderCollie);
             dog.AddPoint(9);
             dog.AddPoint(3.0f);
             dog.AddPoint("9");
@@ -54,7 +54,7 @@ namespace DogShowApp.Tests
         public void WhenPointsAdded_ThenShowCorrectFinalTitle()
         {
             //arrange
-            var dog = new DogInMemory("Moo", "Papillon");
+            var dog = new DogInMemory("Moo", Breed.GermanShepherd);
             dog.AddPoint(10);
             dog.AddPoint(9.5f);
             dog.AddPoint("9,66");

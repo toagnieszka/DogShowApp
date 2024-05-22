@@ -4,7 +4,7 @@
     {
         Kelpie,
         BelgianMalinois,
-        GermanSherped,
+        GermanShepherd,
         BorderCollie,
         Mudi
     }

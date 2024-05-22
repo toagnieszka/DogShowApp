@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace DogShowApp
 {
@@ -6,13 +7,14 @@ namespace DogShowApp
     {
         public override event PointsAddedDelegate PointsAdded;
 
-        public DogInFile(string name, Breed breed) : base(name, breed)
-        {
-
+        public DogInFile()
+        { 
         }
 
-        public DogInFile()
-        { }
+        private string FullFileName 
+        { get
+            { return Name.ToUpper() + "_" + Breed + fileName; }
+        }
 
         const string fileName = "_points.txt";
 
@@ -21,7 +23,7 @@ namespace DogShowApp
 
             if (point <= 10 && point >= 1)
             {
-                using (var writer = File.AppendText(Name.ToUpper() + fileName))
+                using (var writer = File.AppendText(FullFileName))
                 {
                     writer.WriteLine(point);
                 }
@@ -31,7 +33,7 @@ namespace DogShowApp
                     PointsAdded(this, new EventArgs());
                 }
             }
-            else 
+            else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 throw new Exception("Invalid point value");
@@ -43,9 +45,9 @@ namespace DogShowApp
         {
             var statistics = new Statistics();
 
-            if (File.Exists(Name.ToUpper() + fileName))
+            if (File.Exists(FullFileName))
             {
-                using (var reader = File.OpenText(Name.ToUpper() + fileName))
+                using (var reader = File.OpenText(FullFileName))
                 {
 
                     var line = reader.ReadLine();
@@ -63,7 +65,6 @@ namespace DogShowApp
                             throw new Exception("Line is not float");
                             Console.ResetColor();
                         }
-
                     }
                 }
             }
@@ -71,9 +72,7 @@ namespace DogShowApp
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 throw new Exception("File not exist");
-                Console.ResetColor();
             }
-
             return statistics;
         }
     }

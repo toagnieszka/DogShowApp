@@ -8,7 +8,7 @@ namespace DogShowApp
 
         public abstract event PointsAddedDelegate PointsAdded;
 
-        public DogBase (string name, Breed breed)
+        public DogBase(string name, Breed breed)
         {
             this.Name = name;
             this.Breed = breed;
@@ -23,7 +23,7 @@ namespace DogShowApp
 
         public abstract void AddPoint(float point);
 
-        public virtual void AddPoint(int  point)
+        public virtual void AddPoint(int point)
         {
             float floatValue = (float)point;
             this.AddPoint(floatValue);
@@ -44,6 +44,5 @@ namespace DogShowApp
         }
 
         public abstract Statistics GetStatistics();
-
     }
 }
