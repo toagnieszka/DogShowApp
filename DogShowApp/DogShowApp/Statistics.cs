@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace DogShowApp
+﻿namespace DogShowApp
 {
     public class Statistics
     {

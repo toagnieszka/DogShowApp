@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DogShowApp
+﻿namespace DogShowApp
 {
     public abstract class DogBase : IDog
     {

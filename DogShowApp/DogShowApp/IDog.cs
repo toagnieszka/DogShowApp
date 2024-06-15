@@ -2,9 +2,9 @@
 {
     public interface IDog
     {
-        string Name { get; }
+        string Name { get; set; }
 
-        Breed Breed { get; }
+        Breed Breed { get; set; }
 
         void AddPoint(float point);
 

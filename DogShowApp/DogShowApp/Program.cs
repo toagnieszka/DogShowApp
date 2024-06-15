@@ -1,6 +1,6 @@
 ﻿using DogShowApp;
 
-void GetDogInMemory(DogInMemory dog)
+void GetDog(IDog dog)
 {
     Console.ForegroundColor = ConsoleColor.DarkBlue;
     Console.WriteLine("\n Wprowadź imię psa:\n");
@@ -35,7 +35,7 @@ void GetDogInMemory(DogInMemory dog)
 
 }
 
-void DogInMemoryInfo(DogInMemory dog)
+void WriteDogInfo(IDog dog)
 {
     var statistics = dog.GetStatistics();
 
@@ -44,53 +44,6 @@ void DogInMemoryInfo(DogInMemory dog)
     Console.WriteLine($"Najwyższa nota: \u001b[33m{statistics.Max}\u001b[35m");
     Console.WriteLine($"Najniższa nota: \u001b[33m{statistics.Min}\u001b[35m");
     Console.WriteLine($"Średnia punktów: \u001b[33m{statistics.Average}\u001b[35m");
-    Console.WriteLine($"Finalna ocena: \u001b[33m{statistics.FinalTitle}\u001b[35m");
-    Console.ResetColor();
-}
-
-void GetDogInFile(DogInFile dog)
-{
-    Console.ForegroundColor = ConsoleColor.DarkBlue;
-    Console.WriteLine("\nWprowadź imię psa:\n");
-    Console.ResetColor();
-    var name = Console.ReadLine();
-    dog.Name = name.ToUpper();
-
-    Console.ForegroundColor = ConsoleColor.DarkBlue;
-    Console.WriteLine("\nWprowadź rasę psa poprzez wybranie odpowiadjącego jej numeru\n\u001b[36m 1 - Kelpie\n 2 - Owczarek belgijski\n " +
-                         "3 - Owczarek niemiecki\n 4 - Border Collie\n 5 - Mudi\n");
-    Console.ResetColor();
-    var breed = Console.ReadLine();
-
-    switch (breed)
-    {
-        case "1":
-            dog.Breed = Breed.Kelpie;
-            break;
-        case "2":
-            dog.Breed = Breed.BelgianMalinois;
-            break;
-        case "3":
-            dog.Breed = Breed.GermanShepherd;
-            break;
-        case "4":
-            dog.Breed = Breed.BorderCollie;
-            break;
-        case "5":
-            dog.Breed = Breed.Mudi;
-            break;
-    }
-}
-
-void DogInFileInfo(DogInFile dog)
-{
-    var statistics = dog.GetStatistics();
-
-    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-    Console.WriteLine($"\nOto statystyki dla psa o imieniu {dog.Name} rasy {dog.Breed}:\n");
-    Console.WriteLine($"Najwyższa nota: \u001b[33m{statistics.Max}\u001b[35m");
-    Console.WriteLine($"Najniższa nota: \u001b[33m{statistics.Min}\u001b[35m");
-    Console.WriteLine($"Średnia punktów: \u001b[33m{statistics.Average:N2}\u001b[35m");
     Console.WriteLine($"Finalna ocena: \u001b[33m{statistics.FinalTitle}\u001b[35m");
     Console.ResetColor();
 }
@@ -116,7 +69,7 @@ if (number == "1")
 {
     var dog = new DogInMemory();
     dog.PointsAdded += PointAdded;
-    GetDogInMemory(dog);
+    GetDog(dog);
 
     Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("\n*Jeżeli chcesz wyświetlić statystyki wpisz: \u001b[31m Q");
@@ -143,13 +96,13 @@ if (number == "1")
             Console.WriteLine(ex.Message);
         }
     }
-    DogInMemoryInfo(dog);
+    WriteDogInfo(dog);
 }
 else if (number == "2")
 {
     var dog = new DogInFile();
     dog.PointsAdded += PointAdded;
-    GetDogInFile(dog);
+    GetDog(dog);
 
     Console.ForegroundColor = ConsoleColor.DarkGray;
     Console.WriteLine("\n*Jeżeli chcesz wyświetlić statystyki wpisz: \u001b[31m Q");
@@ -176,5 +129,5 @@ else if (number == "2")
             Console.WriteLine(ex.Message);
         }
     }
-    DogInFileInfo(dog);
+    WriteDogInfo(dog);
 }
